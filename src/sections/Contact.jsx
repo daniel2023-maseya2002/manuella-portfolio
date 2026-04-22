@@ -97,7 +97,7 @@ const Contact = () => {
       name: 'name',
       label: 'Full Name',
       type: 'text',
-      placeholder: 'John Doe',
+      placeholder: 'manuella Hart',
       required: true,
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,7 +109,7 @@ const Contact = () => {
       name: 'email',
       label: 'Email Address',
       type: 'email',
-      placeholder: 'john@example.com',
+      placeholder: 'manuellaHart@example.com',
       required: true,
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
