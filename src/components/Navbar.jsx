@@ -74,13 +74,12 @@ const Navbar = () => {
     }
   };
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsOpen(false);
-      setIsDropdownOpen(false);
-    }
+  const openWhatsApp = () => {
+    const phoneNumber = '250791226903';
+    const message = 'Hello, I hope you\'re doing well. I visited your portfolio and I am interested in discussing a potential collaboration or work opportunity with you. Please let me know a convenient time to connect. Thank you.';
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    setIsOpen(false);
+    setIsDropdownOpen(false);
   };
 
   const isActive = (id) => activeSection === id;
@@ -227,19 +226,19 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Desktop CTA Button */}
+          {/* Desktop WhatsApp Button */}
           <div className="hidden lg:block">
             <button
-              onClick={scrollToContact}
-              className="group relative px-6 py-2.5 bg-gradient-to-r from-brownSoft to-nudeDark text-cream rounded-xl font-semibold overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+              onClick={openWhatsApp}
+              className="group relative px-6 py-2.5 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-semibold overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 flex items-center gap-2"
             >
-              <span className="relative z-10 flex items-center space-x-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <span className="relative z-10 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" className="w-4 h-4">
+                  <path d="M16.001 3C8.821 3 3 8.822 3 16c0 2.821.922 5.427 2.48 7.535L3 29l5.654-2.455A12.94 12.94 0 0016 29c7.179 0 13-5.822 13-13S23.18 3 16.001 3zm0 23.4a10.35 10.35 0 01-5.273-1.447l-.378-.224-3.356 1.457.715-3.271-.246-.38A10.33 10.33 0 015.65 16c0-5.708 4.643-10.35 10.351-10.35 5.707 0 10.35 4.642 10.35 10.35 0 5.708-4.643 10.35-10.35 10.35zm5.677-7.752c-.311-.156-1.837-.907-2.123-1.01-.285-.104-.493-.156-.701.156-.207.311-.804 1.01-.986 1.218-.181.207-.363.233-.674.078-.311-.156-1.314-.484-2.503-1.542-.925-.825-1.549-1.844-1.731-2.155-.181-.311-.019-.479.137-.635.14-.139.311-.363.467-.545.156-.182.207-.311.311-.519.104-.207.052-.389-.026-.545-.078-.156-.701-1.692-.96-2.318-.252-.607-.508-.525-.701-.535l-.597-.01c-.207 0-.545.078-.83.389s-1.09 1.064-1.09 2.595 1.116 3.008 1.272 3.215c.156.207 2.197 3.355 5.323 4.703.744.321 1.324.512 1.776.655.746.237 1.425.204 1.962.124.598-.089 1.837-.75 2.097-1.475.259-.726.259-1.348.181-1.475-.078-.129-.285-.207-.597-.363z"/>
                 </svg>
-                <span>Hire Me</span>
+                <span>WhatsApp</span>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-nudeDark to-brownSoft transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-green-600 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             </button>
           </div>
 
@@ -325,15 +324,15 @@ const Navbar = () => {
               {contactLink.name}
             </a>
             
-            {/* Mobile CTA Button */}
+            {/* Mobile WhatsApp Button */}
             <button
-              onClick={scrollToContact}
-              className="mt-4 py-3 bg-gradient-to-r from-brownSoft to-nudeDark text-cream rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
+              onClick={openWhatsApp}
+              className="mt-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" className="w-5 h-5">
+                <path d="M16.001 3C8.821 3 3 8.822 3 16c0 2.821.922 5.427 2.48 7.535L3 29l5.654-2.455A12.94 12.94 0 0016 29c7.179 0 13-5.822 13-13S23.18 3 16.001 3zm0 23.4a10.35 10.35 0 01-5.273-1.447l-.378-.224-3.356 1.457.715-3.271-.246-.38A10.33 10.33 0 015.65 16c0-5.708 4.643-10.35 10.351-10.35 5.707 0 10.35 4.642 10.35 10.35 0 5.708-4.643 10.35-10.35 10.35zm5.677-7.752c-.311-.156-1.837-.907-2.123-1.01-.285-.104-.493-.156-.701.156-.207.311-.804 1.01-.986 1.218-.181.207-.363.233-.674.078-.311-.156-1.314-.484-2.503-1.542-.925-.825-1.549-1.844-1.731-2.155-.181-.311-.019-.479.137-.635.14-.139.311-.363.467-.545.156-.182.207-.311.311-.519.104-.207.052-.389-.026-.545-.078-.156-.701-1.692-.96-2.318-.252-.607-.508-.525-.701-.535l-.597-.01c-.207 0-.545.078-.83.389s-1.09 1.064-1.09 2.595 1.116 3.008 1.272 3.215c.156.207 2.197 3.355 5.323 4.703.744.321 1.324.512 1.776.655.746.237 1.425.204 1.962.124.598-.089 1.837-.75 2.097-1.475.259-.726.259-1.348.181-1.475-.078-.129-.285-.207-.597-.363z"/>
               </svg>
-              <span>Hire Me</span>
+              <span>WhatsApp</span>
             </button>
           </div>
         </div>

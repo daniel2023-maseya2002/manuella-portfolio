@@ -50,6 +50,12 @@ const Footer = () => {
     }
   ];
 
+  const openWhatsApp = () => {
+    const phoneNumber = '250791226903';
+    const message = 'Hello, I hope you\'re doing well. I visited your portfolio and I am interested in discussing a potential collaboration or work opportunity with you. Please let me know a convenient time to connect. Thank you.';
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
   const socialLinks = [
     {
       name: 'LinkedIn',
@@ -84,11 +90,11 @@ const Footer = () => {
     {
       name: 'WhatsApp',
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.588 2.014.896 3.13.896h.002c3.18 0 5.767-2.586 5.768-5.766.001-3.18-2.585-5.768-5.765-5.768zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.068-.414-.131-1.339-.622-2.49-1.734-.983-.947-1.607-1.891-1.76-2.199-.152-.308-.152-.583-.032-.793.092-.156.234-.312.375-.468.14-.156.216-.26.312-.416.096-.156.048-.287-.024-.403-.072-.117-.656-1.585-.896-2.158-.236-.564-.464-.456-.624-.468-.16-.012-.328-.012-.528-.012-.2 0-.52.072-.792.36-.272.288-1.04 1.016-1.04 2.476 0 1.46 1.064 2.871 1.212 3.07.148.199 2.096 3.2 5.088 4.485.71.305 1.264.486 1.696.622.712.226 1.36.194 1.872.118.572-.085 1.328-.544 1.512-1.066.184-.522.184-.968.128-1.064-.056-.096-.208-.156-.432-.272-.224-.116-1.328-.656-1.536-.732-.208-.076-.36-.116-.512.116-.152.232-.592.732-.728.884-.136.152-.28.172-.504.056-.224-.116-.952-.352-1.816-1.112-.672-.592-1.128-1.324-1.264-1.548-.136-.224-.016-.344.104-.464.104-.104.232-.272.344-.408.112-.136.152-.232.224-.388.072-.156.024-.292-.016-.408-.04-.116-.664-1.6-.912-2.192-.24-.576-.48-.48-.624-.48s-.336-.008-.512-.008c-.176 0-.456.064-.696.328-.24.264-1.008.984-1.008 2.404 0 1.42.928 2.788 1.056 2.98.128.192 1.824 2.788 4.416 3.908.616.264 1.096.424 1.472.544.616.192 1.176.164 1.624.104.496-.068 1.328-.544 1.512-1.064.184-.52.184-.968.128-1.064-.056-.096-.208-.156-.432-.272z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" className="w-5 h-5">
+          <path d="M16.001 3C8.821 3 3 8.822 3 16c0 2.821.922 5.427 2.48 7.535L3 29l5.654-2.455A12.94 12.94 0 0016 29c7.179 0 13-5.822 13-13S23.18 3 16.001 3zm0 23.4a10.35 10.35 0 01-5.273-1.447l-.378-.224-3.356 1.457.715-3.271-.246-.38A10.33 10.33 0 015.65 16c0-5.708 4.643-10.35 10.351-10.35 5.707 0 10.35 4.642 10.35 10.35 0 5.708-4.643 10.35-10.35 10.35zm5.677-7.752c-.311-.156-1.837-.907-2.123-1.01-.285-.104-.493-.156-.701.156-.207.311-.804 1.01-.986 1.218-.181.207-.363.233-.674.078-.311-.156-1.314-.484-2.503-1.542-.925-.825-1.549-1.844-1.731-2.155-.181-.311-.019-.479.137-.635.14-.139.311-.363.467-.545.156-.182.207-.311.311-.519.104-.207.052-.389-.026-.545-.078-.156-.701-1.692-.96-2.318-.252-.607-.508-.525-.701-.535l-.597-.01c-.207 0-.545.078-.83.389s-1.09 1.064-1.09 2.595 1.116 3.008 1.272 3.215c.156.207 2.197 3.355 5.323 4.703.744.321 1.324.512 1.776.655.746.237 1.425.204 1.962.124.598-.089 1.837-.75 2.097-1.475.259-.726.259-1.348.181-1.475-.078-.129-.285-.207-.597-.363z"/>
         </svg>
       ),
-      href: 'https://wa.me/250791226903?text=Hello%2C%20I%20would%20like%20to%20collaborate%20or%20discuss%20a%20work%20opportunity.',
+      onClick: openWhatsApp,
       color: 'hover:bg-[#25D366]',
       title: 'Chat on WhatsApp'
     },
@@ -154,10 +160,14 @@ const Footer = () => {
                 <a
                   key={social.name}
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={social.onClick ? (e) => {
+                    e.preventDefault();
+                    social.onClick();
+                  } : undefined}
+                  target={social.href && !social.onClick ? "_blank" : undefined}
+                  rel={social.href && !social.onClick ? "noopener noreferrer" : undefined}
                   title={social.title || `Visit my ${social.name}`}
-                  className={`group w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl ${social.color} hover:text-white`}
+                  className={`group w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl ${social.color} hover:text-white cursor-pointer`}
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <div className="text-white/80 group-hover:text-white transition-colors duration-300">
