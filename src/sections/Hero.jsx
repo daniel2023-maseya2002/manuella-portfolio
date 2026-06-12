@@ -1,6 +1,6 @@
 // src/sections/Hero.jsx
 import { useEffect, useState } from 'react';
-import cvFile from '../assets/documents/cv.pdf';
+import cvFile from '../assets/documents/Hart Resume Updated.pdf';
 import profileImage from '../assets/images/pictureprofile.jpeg';
 
 const Hero = () => {
